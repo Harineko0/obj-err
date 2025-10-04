@@ -1,0 +1,31 @@
+{
+  "name": "obj-err",
+  "version": "1.0.0",
+  "description": "Common object error library specifically for functional typescript.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "library",
+    "error"
+  ],
+  "author": "Harineko",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "zod": "^4.1.11"
+  }
+}
