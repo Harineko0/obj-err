@@ -1,4 +1,4 @@
-# My TypeScript Library
+# obj-err
 
 [![npm version](https://img.shields.io/npm/v/obj-err.svg)](https://www.npmjs.com/package/obj-err)
 [![License](https://img.shields.io/npm/l/obj-err.svg)](https://github.com/Harineko0/obj-err/blob/main/LICENSE)
