@@ -1,6 +1,6 @@
 {
   "name": "obj-err",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common object error library specifically for functional typescript.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -11,6 +11,9 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -27,5 +30,13 @@
   },
   "dependencies": {
     "zod": "^4.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harineko0/obj-err.git"
+  },
+  "homepage": "https://github.com/Harineko0/obj-err#readme",
+  "bugs": {
+    "url": "https://github.com/Harineko0/obj-err/issues"
   }
 }
