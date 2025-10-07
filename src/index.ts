@@ -1,4 +1,4 @@
-import type {core, z, ZodObject} from 'zod';
+import type { core, z, ZodObject } from 'zod';
 
 export type BaseTag = string;
 type BaseExtra = object;
@@ -6,7 +6,7 @@ type Extra<E extends BaseExtra> = [E] extends [never]
   ? { extra?: E }
   : { extra: E };
 
-const TAG: unique symbol = Symbol("TAG");
+const TAG: unique symbol = Symbol('TAG');
 // const TAG = 'TAG';
 
 export type BaseError<Tag extends BaseTag, Ext extends BaseExtra> = {
@@ -47,7 +47,6 @@ export const errorBuilder = <
     | ZodObject<Shape, Config>
     // | Record<string | number | symbol, unknown>
     | undefined = undefined,
-   
   Shape extends core.$ZodShape = core.$ZodLooseShape,
   Config extends core.$ZodObjectConfig = core.$strip,
   ActualExtra extends object = Extra extends ZodObject<Shape, Config>

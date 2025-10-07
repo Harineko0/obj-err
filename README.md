@@ -33,9 +33,9 @@ export type NotFounderror = InferError<typeof NotFounderror>;
 
 // Another error with additional properties
 export const InputTooShortError = errorBuilder('InputTooShortError', {
-    id: "string",
-    requiredLength: 123,
-    actualLength: 123,
+  id: 'string',
+  requiredLength: 123,
+  actualLength: 123,
 });
 export type InputTooShortError = InferError<typeof InputTooShortError>;
 
