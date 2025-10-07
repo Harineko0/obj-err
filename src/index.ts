@@ -47,7 +47,7 @@ export const errorBuilder = <
     | ZodObject<Shape, Config>
     // | Record<string | number | symbol, unknown>
     | undefined = undefined,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   Shape extends core.$ZodShape = core.$ZodLooseShape,
   Config extends core.$ZodObjectConfig = core.$strip,
   ActualExtra extends object = Extra extends ZodObject<Shape, Config>
