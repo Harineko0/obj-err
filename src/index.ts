@@ -1,4 +1,4 @@
-import type { ZodType, ZodTypeDef } from 'zod/v3';
+import type { core, z, ZodObject } from 'zod';
 
 export type BaseTag = string;
 type BaseExtra = object;
@@ -6,8 +6,8 @@ type Extra<E extends BaseExtra> = [E] extends [never]
   ? { extra?: E }
   : { extra: E };
 
-// const TAG: unique symbol = Symbol("TAG");
-const TAG = 'TAG';
+const TAG: unique symbol = Symbol('TAG');
+// const TAG = 'TAG';
 
 export type BaseError<Tag extends BaseTag, Ext extends BaseExtra> = {
   [TAG]: Tag;
@@ -44,14 +44,13 @@ export type InferError<Builder extends ErrorBuilder<any, any>> =
 export const errorBuilder = <
   Tag extends BaseTag,
   Extra extends
-    | ZodType<Output, Def, Input>
-    | Record<string | number | symbol, unknown>
+    | ZodObject<Shape, Config>
+    // | Record<string | number | symbol, unknown>
     | undefined = undefined,
-  Output extends object = object,
-  Def extends ZodTypeDef = ZodTypeDef,
-  Input = Output,
-  ActualExtra extends object = Extra extends ZodType<Output, Def, Input>
-    ? Extra['_output']
+  Shape extends core.$ZodShape = core.$ZodLooseShape,
+  Config extends core.$ZodObjectConfig = core.$strip,
+  ActualExtra extends object = Extra extends ZodObject<Shape, Config>
+    ? z.infer<Extra>
     : Extra extends object
       ? Extra
       : never,

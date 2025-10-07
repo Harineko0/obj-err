@@ -27,11 +27,29 @@ yarn add obj-err
 ```typescript
 import { errorBuilder, InferError } from 'obj-err';
 
-export const InputTooShortError = errorBuilder<
-  'InputTooShortError',
-  { details: string; requiredLength: number; actualLength: number }
->('InputTooShortError');
+// Define an error for each specific case
+export const NotFounderror = errorBuidler('NotFoundError');
+export type NotFounderror = InferError<typeof NotFounderror>;
+
+// Another error with additional properties
+export const InputTooShortError = errorBuilder('InputTooShortError', {
+  id: 'string',
+  requiredLength: 123,
+  actualLength: 123,
+});
 export type InputTooShortError = InferError<typeof InputTooShortError>;
+
+// You can use zod schema for extra properties
+import { z } from 'zod';
+
+export const AnotherError = errorBuilder(
+  'AnotherError',
+  z.object({
+    reason: z.string(),
+    code: z.number(),
+  })
+);
+export type AnotherError = InferError<typeof AnotherError>;
 ```
 
 ### Throwing the Custom Error (e.g. using neverthrow)
@@ -60,11 +78,11 @@ export const validateString = (
 
 ```typescript
 const handleError = (
-  error: InputTooShortError | StringNotFoundError | AnotherError
+  error: InputTooShortError | NotFounderror | AnotherError
 ) =>
   match(error)
     .with(InputTooShortError.is, () => StatusCode.BadRequest)
-    .with(StringNotFoundError.is, () => StatusCode.NotFound)
+    .with(NotFounderror.is, () => StatusCode.NotFound)
     .with(AnotherError.is, () => StatusCode.InternalServerError)
     .exhaustive();
 ```
