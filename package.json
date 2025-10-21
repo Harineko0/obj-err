@@ -1,6 +1,6 @@
 {
   "name": "obj-err",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Common object error library specifically for functional typescript.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -29,14 +29,16 @@
   ],
   "author": "Harineko",
   "license": "MIT",
+  "dependencies": {
+    "zod": "^4.1.11"
+  },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.45.0",
-    "zod": "^4.1.11"
+    "typescript-eslint": "^8.45.0"
   },
   "repository": {
     "type": "git",
